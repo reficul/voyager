@@ -278,7 +278,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3111111', e
 
         #fonts li{
             flex: 1;
-            max-width:212px;
+            max-width:225px;
             padding: 10px;
             padding-left: 30px;
             position: relative;
