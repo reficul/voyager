@@ -6,11 +6,15 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Facades\Voyager;
+use TCG\Voyager\Traits\HasRelationships;
+use TCG\Voyager\Traits\Resizable;
 use TCG\Voyager\Traits\Translatable;
 
 class Post extends Model
 {
-    use Translatable;
+    use Translatable,
+        Resizable,
+        HasRelationships;
 
     protected $translatable = ['title', 'seo_title', 'excerpt', 'body', 'slug', 'meta_description', 'meta_keywords'];
 
@@ -30,7 +34,7 @@ class Post extends Model
 
     public function authorId()
     {
-        return $this->belongsTo(Voyager::modelClass('User'));
+        return $this->belongsTo(Voyager::modelClass('User'), 'author_id', 'id');
     }
 
     /**
@@ -50,6 +54,6 @@ class Post extends Model
      */
     public function category()
     {
-        return $this->hasOne(Voyager::modelClass('Category'), 'id', 'category_id');
+        return $this->belongsTo(Voyager::modelClass('Category'));
     }
 }

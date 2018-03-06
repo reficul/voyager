@@ -12,7 +12,7 @@
 
 @endphp
 
-@foreach ($items->sortBy('order') as $item)
+@foreach ($items as $item)
     
     @php
     
@@ -22,6 +22,7 @@
         }
 
         $listItemClass = null;
+        $linkAttributes =  null;
         $styles = null;
         $icon = null;
         $caret = null;
